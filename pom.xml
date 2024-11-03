@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.duoc</groupId>
-	<artifactId>batch-advance-configurations</artifactId>
+	<artifactId>batch-partitions-configurations</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>batch-advance-configurations</name>
-	<description>Spring batch-advance-configurations</description>
+	<name>batch-partitions-configurations</name>
+	<description>Spring batch-partitions-configurations</description>
 	<url/>
 	<licenses>
 		<license/>
