@@ -18,7 +18,7 @@ Para poder utilizar este repositorio, deberas abrir tu terminal (bash/PowerShell
 
 ```bash
 git clone https://github.com/KariVillagran/batch_partitions.git
-cd batch_advance_configurations
+cd batch_partitions
 ```
 
 2. Compila y ejecuta

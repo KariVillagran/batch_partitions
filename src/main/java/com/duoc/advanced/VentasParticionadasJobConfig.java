@@ -54,16 +54,6 @@ public class VentasParticionadasJobConfig {
     }
 
     @Bean
-    public Step partitionStep(JobRepository jobRepository, 
-                              TaskExecutorPartitionHandler partitionHandler,
-                              Partitioner partitioner) {
-        return new StepBuilder("partitionStep", jobRepository)
-                .partitioner("minionStep", partitioner)
-                .partitionHandler(partitionHandler)
-                .build();
-    }
-
-    @Bean
     public TaskExecutorPartitionHandler partitionHandler(Step minionStep, TaskExecutor taskExecutor) {
         TaskExecutorPartitionHandler handler = new TaskExecutorPartitionHandler();
         handler.setStep(minionStep);
@@ -73,13 +63,13 @@ public class VentasParticionadasJobConfig {
     }
 
     @Bean
-    public TaskExecutor taskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(3);
-        executor.setMaxPoolSize(3);
-        executor.setQueueCapacity(10);
-        executor.initialize();
-        return executor;
+    public Step partitionStep(JobRepository jobRepository, 
+                              TaskExecutorPartitionHandler partitionHandler,
+                              Partitioner partitioner) {
+        return new StepBuilder("partitionStep", jobRepository)
+                .partitioner("minionStep", partitioner)
+                .partitionHandler(partitionHandler)
+                .build();
     }
 
     @Bean
@@ -115,6 +105,16 @@ public class VentasParticionadasJobConfig {
                 })
                 .build();
     }
+
+    @Bean
+    public TaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(3);
+        executor.setMaxPoolSize(3);
+        executor.setQueueCapacity(10);
+        executor.initialize();
+        return executor;
+    }    
 
     @Bean
     public Partitioner partitioner() {
